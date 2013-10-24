@@ -510,6 +510,13 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 }
 
 
+- (void)showForCheckingPasscodeInViewController:(UIViewController *)viewController {
+	[self prepareForCheckingPasscode];
+	[self prepareNavigationControllerWithController: viewController];
+	self.title = NSLocalizedString(@"Enter Passcode", @"");
+}
+
+
 - (void)showForEnablingPasscodeInViewController:(UIViewController *)viewController {
 	[self prepareForEnablingPasscode];
 	[self prepareNavigationControllerWithController: viewController];
@@ -541,6 +548,15 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 	[self resetUI];
 }
 
+- (void)prepareForCheckingPasscode {
+	_isCurrentlyOnScreen = YES;
+	_beingDisplayedAsLockscreen = NO;
+	_isUserTurningPasscodeOff = NO;
+	_isUserChangingPasscode = NO;
+	_isUserConfirmingPasscode = NO;
+	_isUserEnablingPasscode = NO;
+	[self resetUI];
+}
 
 - (void)prepareForChangingPasscode {
 	_isCurrentlyOnScreen = YES;

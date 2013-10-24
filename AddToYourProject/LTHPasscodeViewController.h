@@ -36,11 +36,13 @@
 @property (assign) BOOL isCurrentlyOnScreen;
 
 - (void)showLockscreen;
+- (void)showForCheckingPasscodeInViewController:(UIViewController *)viewController;
 - (void)showForEnablingPasscodeInViewController:(UIViewController *)viewController;
 - (void)showForChangingPasscodeInViewController:(UIViewController *)viewController;
 - (void)showForTurningOffPasscodeInViewController:(UIViewController *)viewController;
 
 - (void)prepareAsLockscreen;
+- (void)prepareForCheckingPasscode;
 - (void)prepareForChangingPasscode;
 - (void)prepareForTurningOffPasscode;
 - (void)prepareForEnablingPasscode;
