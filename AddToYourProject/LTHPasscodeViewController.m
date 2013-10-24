@@ -325,11 +325,12 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 	_isUserTurningPasscodeOff = NO;
 	[self resetUI];
 	// Or, if you prefer by notifications:
-//	[[NSNotificationCenter defaultCenter] postNotificationName: @"dismissPasscodeViewController"
-//														object: self
-//													  userInfo: nil];
-	if ([self.delegate respondsToSelector: @selector(passcodeViewControllerWasDismissed)])
+	[[NSNotificationCenter defaultCenter] postNotificationName: @"cancelPasscodeViewController"
+														object: self
+													  userInfo: nil];
+	/*if ([self.delegate respondsToSelector: @selector(passcodeViewControllerWasDismissed)]) {
 		[self.delegate performSelector: @selector(passcodeViewControllerWasDismissed)];
+    }*/
 	[self dismissViewControllerAnimated: YES completion: nil];
 }
 
@@ -361,7 +362,7 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 												   error: nil];
 			}
 			// Update the Keychain if adding or changing passcode
-			else {
+			else if (_isUserChangingPasscode || _isUserConfirmingPasscode || _isUserEnablingPasscode) {
 				[SFHFKeychainUtils storeUsername: kKeychainPasscode
 									 andPassword: _tempPasscode
 								  forServiceName: kKeychainServiceName
@@ -370,12 +371,12 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 			}
 		}
 	} completion: ^(BOOL finished) {
-		// Or, if you prefer by notifications:
-//		[[NSNotificationCenter defaultCenter] postNotificationName: @"dismissPasscodeViewController"
-//															object: self
-//														  userInfo: nil];
-		if ([self.delegate respondsToSelector: @selector(passcodeViewControllerWasDismissed)])
+		[[NSNotificationCenter defaultCenter] postNotificationName: @"dismissPasscodeViewController"
+															object: self
+														  userInfo: nil];
+		/*if ([self.delegate respondsToSelector: @selector(passcodeViewControllerWasDismissed)]) {
 			[self.delegate performSelector: @selector(passcodeViewControllerWasDismissed)];
+        }*/
 		if (_beingDisplayedAsLockscreen) {
 			[self.view removeFromSuperview];
 			[self removeFromParentViewController];

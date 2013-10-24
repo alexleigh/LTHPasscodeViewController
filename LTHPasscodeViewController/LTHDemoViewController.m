@@ -39,7 +39,7 @@
 }
 
 
-- (void)passcodeViewControllerWasDismissed {
+- (void)passcodeViewControllerWasDismissed:(NSNotification *)aNotification {
 	[self _refreshUI];
 }
 
@@ -49,8 +49,17 @@
 	self.title = @"Demo";
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	[LTHPasscodeViewController sharedUser].delegate = self;
-	
+	//[LTHPasscodeViewController sharedUser].delegate = self;
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc addObserver:self
+           selector:@selector(passcodeViewControllerWasDismissed:)
+               name:@"dismissPasscodeViewController"
+             object:nil];
+    [nc addObserver:self
+           selector:@selector(passcodeViewControllerWasDismissed:)
+               name:@"cancelPasscodeViewController"
+             object:nil];
+    
 	_changePasscode = [UIButton buttonWithType: UIButtonTypeCustom];
 	_enablePasscode = [UIButton buttonWithType: UIButtonTypeCustom];
 	_testPasscode = [UIButton buttonWithType: UIButtonTypeCustom];
