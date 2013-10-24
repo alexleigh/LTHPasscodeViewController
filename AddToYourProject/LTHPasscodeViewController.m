@@ -422,23 +422,23 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 		CGPoint newCenter;
 		if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft) {
 			self.view.center = CGPointMake(self.view.center.x * -1.f, self.view.center.y);
-			newCenter = CGPointMake(self.navigationController.view.center.x - self.navigationController.navigationBar.frame.size.height / 2,
-									self.navigationController.view.center.y);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x - self.navigationController.navigationBar.frame.size.height / 2,
+									[UIApplication sharedApplication].keyWindow.center.y);
 		}
 		else if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
 			self.view.center = CGPointMake(self.view.center.x * 2.f, self.view.center.y);
-			newCenter = CGPointMake(self.navigationController.view.center.x + self.navigationController.navigationBar.frame.size.height / 2,
-									self.navigationController.view.center.y);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x + self.navigationController.navigationBar.frame.size.height / 2,
+									[UIApplication sharedApplication].keyWindow.center.y);
 		}
 		else if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
 			self.view.center = CGPointMake(self.view.center.x, self.view.center.y * -1.f);
-			newCenter = CGPointMake(self.navigationController.view.center.x,
-									self.navigationController.view.center.y - self.navigationController.navigationBar.frame.size.height / 2);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x,
+									[UIApplication sharedApplication].keyWindow.center.y - self.navigationController.navigationBar.frame.size.height / 2);
 		}
 		else {
 			self.view.center = CGPointMake(self.view.center.x, self.view.center.y * 2.f);
-			newCenter = CGPointMake(self.navigationController.view.center.x,
-									self.navigationController.view.center.y + self.navigationController.navigationBar.frame.size.height / 2);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x,
+									[UIApplication sharedApplication].keyWindow.center.y + self.navigationController.navigationBar.frame.size.height / 2);
 		}
 		[UIView animateWithDuration: kLockAnimationDuration animations: ^{
 			self.view.center = newCenter;
@@ -475,23 +475,23 @@ static CGFloat const kSlideAnimationDuration = 0.15f;
 		CGPoint newCenter;
 		if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft) {
 			self.view.center = CGPointMake(self.view.center.x * -1.f, self.view.center.y);
-			newCenter = CGPointMake(self.navigationController.view.center.x - self.navigationController.navigationBar.frame.size.height / 2,
-									self.navigationController.view.center.y);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x - self.navigationController.navigationBar.frame.size.height / 2,
+									[UIApplication sharedApplication].keyWindow.center.y);
 		}
 		else if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
 			self.view.center = CGPointMake(self.view.center.x * 2.f, self.view.center.y);
-			newCenter = CGPointMake(self.navigationController.view.center.x + self.navigationController.navigationBar.frame.size.height / 2,
-									self.navigationController.view.center.y);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x + self.navigationController.navigationBar.frame.size.height / 2,
+									[UIApplication sharedApplication].keyWindow.center.y);
 		}
 		else if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
 			self.view.center = CGPointMake(self.view.center.x, self.view.center.y * -1.f);
-			newCenter = CGPointMake(self.navigationController.view.center.x,
-									self.navigationController.view.center.y - self.navigationController.navigationBar.frame.size.height / 2);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x,
+									[UIApplication sharedApplication].keyWindow.center.y - self.navigationController.navigationBar.frame.size.height / 2);
 		}
 		else {
 			self.view.center = CGPointMake(self.view.center.x, self.view.center.y * 2.f);
-			newCenter = CGPointMake(self.navigationController.view.center.x,
-									self.navigationController.view.center.y + self.navigationController.navigationBar.frame.size.height / 2);
+			newCenter = CGPointMake([UIApplication sharedApplication].keyWindow.center.x,
+									[UIApplication sharedApplication].keyWindow.center.y + self.navigationController.navigationBar.frame.size.height / 2);
 		}
 
 		self.view.center = newCenter;
